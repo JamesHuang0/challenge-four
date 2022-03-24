@@ -58,26 +58,6 @@ startQuiz.addEventListener("click", function() {
     render(questionIndex); 
 });
 
-function render(questionIndex) {
-    questionsDiv.innerHTML = "";
-    ulCreate.innerHTML = "";
-
-    for (var i = 0; i < questionsArray.length; i++) {
-        var quizQuestion = questionsArray[questionIndex].ask;
-        var quizChoices = questionsArray[questionIndex].choices;
-
-        questionsDiv.textContent = quizQuestion;
-    }
-
-    quizChoices.forEach(function (newItem) {
-        var quizItem = document.createElement("li");
-        quizItem.textContent = newItem;
-        questionsDiv.appendChild(ulCreate);
-        ulCreate.appendChild(quizItem);
-        listItem.addEventListener("click", (check));
-    })
-}
-
 function check(event) {
     var element = event.target;
     
@@ -149,7 +129,7 @@ function timesUp() {
     createSubmit.addEventListener("click", function() {
         var name = createInput.value;
 
-        if (initials === null) {
+        if (name === null) {
             
             console.log("No value entered");
 
@@ -173,6 +153,25 @@ function timesUp() {
 
 }
 
+function render(questionIndex) {
+    questionsDiv.innerHTML = "";
+    ulCreate.innerHTML = "";
+
+    for (var i = 0; i < questionsArray.length; i++) {
+        var quizQuestion = questionsArray[questionIndex].ask;
+        var quizChoices = questionsArray[questionIndex].choices;
+
+        questionsDiv.textContent = quizQuestion;
+    }
+
+    quizChoices.forEach(function (newItem) {
+        var quizItem = document.createElement("li");
+        quizItem.textContent = newItem;
+        questionsDiv.appendChild(ulCreate);
+        ulCreate.appendChild(quizItem);
+        quizItem.addEventListener("click", (check));
+    })
+}
 
 
 
