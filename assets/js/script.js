@@ -7,6 +7,7 @@ var currentTime = 0;
 var questionIndex = 0;
 var questionsCorrect = 0;
 var ulCreate = document.createElement("ul");
+var wrapper = document.querySelector("#wrapper");
 
 var questionsArray = [
     {
@@ -56,6 +57,26 @@ startQuiz.addEventListener("click", function() {
     }
     render(questionIndex); 
 });
+
+function render(questionIndex) {
+    questionsDiv.innerHTML = "";
+    ulCreate.innerHTML = "";
+
+    for (var i = 0; i < questionsArray.length; i++) {
+        var quizQuestion = questionsArray[questionIndex].ask;
+        var quizChoices = questionsArray[questionIndex].choices;
+
+        questionsDiv.textContent = quizQuestion;
+    }
+
+    quizChoices.forEach(function (newItem) {
+        var quizItem = document.createElement("li");
+        quizItem.textContent = newItem;
+        questionsDiv.appendChild(ulCreate);
+        ulCreate.appendChild(quizItem);
+        listItem.addEventListener("click", (check));
+    })
+}
 
 function check(event) {
     var element = event.target;
@@ -110,29 +131,49 @@ function timesUp() {
 
     var createLabel = document.createElement("label");
     createLabel.setAttribute("id", "createLabel");
-    createLabel.textContent = "Enter your name to record your score"
+    createLabel.textContent = "Enter your name to record your score:";
+    questionsDiv.appendChild(createLabel);
+
+    var createInput = document.createElement("input");
+    createInput.setAttribute("type", "text");
+    createInput.setAttribute("id", "name");
+    createInput.textContent = "";
+    questionsDiv.appendChild(createInput);
+
+    var createSubmit = document.createElement("button");
+    createSubmit.setAttribute("type", "submit");
+    createSubmit.setAttribute("id", "Submit");
+    createSubmit.textContent = "Submit";
+    questionsDiv.appendChild(createSubmit);
+
+    createSubmit.addEventListener("click", function() {
+        var name = createInput.value;
+
+        if (initials === null) {
+            
+            console.log("No value entered");
+
+        } else {
+            var highScore = {
+                name: name,
+                score: finalScore
+            }
+            console.log(highScore);
+            var allScores = localStorage.getItem("allScores");
+            if (allScores === null) {
+                allScores = [];
+            } else {
+                allScores = JSON.parse(allScores);
+            }
+            allScores.push(finalScore);
+            var newScore = JSON.stringify(allScores);
+            localStorage.setItem("allScores", newScore);
+        }
+    });
 
 }
 
-function render(questionIndex) {
-    questionsDiv.innerHTML = "";
-    ulCreate.innerHTML = "";
 
-    for (var i = 0; i < questionsArray.length; i++) {
-        var quizQuestion = questionsArray[questionIndex].ask;
-        var quizChoices = questionsArray[questionIndex].choices;
-
-        questionsDiv.textContent = quizQuestion;
-    }
-
-    quizChoices.forEach(function (newItem) {
-        var quizItem = document.createElement("li");
-        quizItem.textContent = newItem;
-        questionsDiv.appendChild(ulCreate);
-        ulCreate.appendChild(quizItem);
-        listItem.addEventListener("click", (check));
-    })
-}
 
 
 
