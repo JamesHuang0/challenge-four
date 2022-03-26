@@ -12,7 +12,3 @@ if (allScores !== null) {
         highScore.appendChild(createLi);
     }
 }
-
-backBtn.addEventListener("click", function () {
-   // window.location.href = "index.html"
-});

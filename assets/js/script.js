@@ -43,6 +43,7 @@ var questionsArray = [
     },
 ];
 
+// Starts timer by clicking button
 startQuiz.addEventListener("click", function() {
     if (currentTime === 0) {
         currentTime = setInterval(function() {
@@ -59,6 +60,7 @@ startQuiz.addEventListener("click", function() {
     render(questionIndex); 
 });
 
+// Checks answer choice against correct answer
 function check(event) {
     var element = event.target;
     
@@ -86,6 +88,7 @@ function check(event) {
     questionsDiv.appendChild(createDiv);
 }
 
+// Append last page after the last question is finished or time is up
 function timesUp() {
     questionsDiv.innerHTML = "";
     timer.innerHTML = "";
@@ -154,6 +157,7 @@ function timesUp() {
 
 }
 
+// Renders quiz to page
 function render(questionIndex) {
     questionsDiv.innerHTML = "";
     ulCreate.innerHTML = "";
