@@ -8,37 +8,38 @@ var questionIndex = 0;
 var questionsCorrect = 0;
 var ulCreate = document.createElement("ul");
 var wrapper = document.querySelector("#wrapper");
+var finalScore = 0;
 
 var questionsArray = [
     {
-        ask: "placeholder",
-        choices: ["aasd", "basd", "cdasf", "asd"],
-        answer: "aasd"
+        ask: "A very useful tool for used during development and debugging for printing content to the debugger is:",
+        choices: ["Java", "terminal", "bash", "console log"],
+        answer: "console log"
     },
     {
-        ask: "placeholder",
-        choices: ["aasd", "basd", "cdasf", "asd"],
-        answer: "aasd"
+        ask: "Commonly used data types DO NOT include:",
+        choices: ["alerts", "booleans", "numbers", "strings"],
+        answer: "alerts"
     },
     {
-        ask: "placeholder",
-        choices: ["aasd", "basd", "cdasf", "asd"],
-        answer: "aasd"
+        ask: "The condition in an if / else statement is enclosed within ______.",
+        choices: ["quotes", "curly brackets", "parantheses", "square brackets"],
+        answer: "parantheses"
     },
     {
-        ask: "placeholder",
-        choices: ["aasd", "basd", "cdasf", "asd"],
-        answer: "aasd"
+        ask: "Arrays in Javascript can be used to store ______.",
+        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        answer: "all of the above"
     },
     {
-        ask: "placeholder",
-        choices: ["aasd", "basd", "cdasf", "asd"],
-        answer: "aasd"
+        ask: "String values must be enclosed within ______ when being assigned to variables.",
+        choices: ["commas", "curly brackets", "quotes", "parenthesis"],
+        answer: "quotes"
     },
     {
-        ask: "placeholder",
-        choices: ["aasd", "basd", "cdasf", "asd"],
-        answer: "aasd"
+        ask: "Which programming language can be used to consolidate different styles and spacing of elements on a website?",
+        choices: ["HTML", "CSS", "Javascript", "C++"],
+        answer: "CSS"
     },
 ];
 
@@ -86,7 +87,7 @@ function check(event) {
 }
 
 function timesUp() {
-    questionsDiv.innterHTML = "";
+    questionsDiv.innerHTML = "";
     timer.innerHTML = "";
 
     var createH1 = document.createElement("h1");
@@ -101,7 +102,7 @@ function timesUp() {
     questionsDiv.appendChild(createP);
 
     if (timeLeft >= 0) {
-        var finalScore = timeLeft;
+        finalScore = timeLeft;
         var createP2 = document.createElement("p");
         clearInterval(currentTime);
         createP.textContent = "Your final score is: " + finalScore;
@@ -145,7 +146,7 @@ function timesUp() {
             } else {
                 allScores = JSON.parse(allScores);
             }
-            allScores.push(finalScore);
+            allScores.push(highScore);
             var newScore = JSON.stringify(allScores);
             localStorage.setItem("allScores", newScore);
         }

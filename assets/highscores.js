@@ -14,5 +14,5 @@ if (allScores !== null) {
 }
 
 backBtn.addEventListener("click", function () {
-    window.location.replace="https://mrxanthic.github.io/challenge-four/"
+   // window.location.href = "index.html"
 });
