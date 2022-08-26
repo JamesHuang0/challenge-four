@@ -6,6 +6,6 @@ For this project I created a quiz that asked the user 6 questions with a time li
 
 ## Demo
 
-[Link](https://mrxanthic.github.io/challenge-four/) to the live application.
+[Link](https://JamesHuang0.github.io/challenge-four/) to the live application.
 
 ![Screenshot](https://github.com/mrxanthic/challenge-four/blob/main/assets/Codequizscrnshot.PNG)
